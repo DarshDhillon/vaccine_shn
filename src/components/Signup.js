@@ -2,18 +2,21 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { createNewUserAsync } from '../state/usersSlice';
 import { useDispatch } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [signUpConfirmPassword, setSignUpConfirmPassword] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(
-    //   createNewUserAsync({ email: signUpEmail, password: signUpPassword })
-    // );
+    dispatch(
+      createNewUserAsync({ email: signUpEmail, password: signUpPassword })
+    );
+    history.push('/user-dashboard');
   };
 
   return (
@@ -50,6 +53,9 @@ const SignUp = () => {
           )}
           <SubmitButton type='submit'>Create account</SubmitButton>
         </SignUpForm>
+        <div>
+          Already signed up? <Link to='/login'>Click here</Link>
+        </div>
       </SignUpWrapper>
     </SignUpContainer>
   );
@@ -67,12 +73,13 @@ const SignUpContainer = styled.div`
 `;
 
 const SignUpWrapper = styled.div`
-  border: 3px solid grey;
+  border: 3px solid lightgray;
   min-height: 400px;
   width: 60%;
   display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 const SignUpForm = styled.form`
@@ -85,17 +92,20 @@ const SignUpForm = styled.form`
 
 const Label = styled.label`
   /* font-weight: bold; */
+  margin-bottom: 0.5rem;
 `;
 
 const Input = styled.input`
   font-size: 1.2rem;
   border: none;
   outline: none;
+  margin-bottom: 1rem;
 `;
 
 const Heading = styled.h1`
   /* color: #005eb8; */
   text-align: center;
+  margin-bottom: 1rem;
 `;
 
 const SubmitButton = styled.button`
@@ -104,6 +114,7 @@ const SubmitButton = styled.button`
   background-color: #005eb8;
   color: #fff;
   border: none;
+  cursor: pointer;
 
   :hover {
     background-color: #01417e;

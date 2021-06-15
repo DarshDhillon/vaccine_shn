@@ -7,7 +7,7 @@ export const createNewUserAsync = createAsyncThunk(
     try {
       await firebaseAuth.createUserWithEmailAndPassword(email, password);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 );
@@ -18,7 +18,7 @@ export const logoutCurrentUserAsync = createAsyncThunk(
     try {
       await firebaseAuth.signOut();
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 );
@@ -29,7 +29,7 @@ export const loginUserAsync = createAsyncThunk(
     try {
       await firebaseAuth.signInWithEmailAndPassword(email, password);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 );
@@ -37,19 +37,39 @@ export const loginUserAsync = createAsyncThunk(
 const usersSlice = createSlice({
   name: 'users',
   initialState: {
-    isLoading: true,
-    currentUserUid: '',
+    isLoading: false,
+    isLoadingUser: false,
+    currentUser: null,
   },
   reducers: {
     setIsLoading: (state, { payload }) => {
       state.isLoading = payload;
     },
-    setCurrentUserUid: (state, { payload }) => {
-      state.currentUserUid = payload;
+    setCurrentUser: (state, { payload }) => {
+      state.currentUser = payload;
+    },
+    setIsLoadingUser: (state, { payload }) => {
+      state.isLoadingUser = payload;
+    },
+  },
+
+  extraReducers: {
+    [loginUserAsync.pending]: (state) => {
+      state.isLoadingUser = true;
+    },
+    [loginUserAsync.fulfilled]: (state) => {
+      state.isLoadingUser = false;
+    },
+    [createNewUserAsync.pending]: (state) => {
+      state.isLoadingUser = true;
+    },
+    [createNewUserAsync.fulfilled]: (state) => {
+      state.isLoadingUser = false;
     },
   },
 });
 
-export const { setIsLoading, setCurrentUserUid } = usersSlice.actions;
+export const { setIsLoading, setCurrentUser, setIsLoadingUser } =
+  usersSlice.actions;
 
 export default usersSlice.reducer;
