@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import {
-  loginUserAsync,
-  logoutCurrentUserAsync,
-  setIsLoadingUser,
-} from '../state/usersSlice';
+import { setIsLoadingUser } from '../state/usersSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
+import { firebaseAuth } from '../firebase';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,22 +11,27 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    dispatch(loginUserAsync({ email, password }));
-    history.push('/user-dashboard');
-  };
+    dispatch(setIsLoadingUser(true));
 
-  const handleLogout = (e) => {
-    dispatch(logoutCurrentUserAsync());
-    // dispatch(setIsLoadingUser(true));
+    try {
+      await firebaseAuth.signInWithEmailAndPassword(email, password);
+      dispatch(setIsLoadingUser(false));
+      history.push('/user-dashboard');
+    } catch {
+      console.log('we have a problem');
+      dispatch(setIsLoadingUser(false));
+      setEmail('');
+      setPassword('');
+    }
   };
 
   return (
     <LoginContainer>
       <LoginWrapper>
         <LoginForm onSubmit={handleLogin}>
-          <Heading>Sign In</Heading>
+          <Heading>Sign in</Heading>
           <Label>Email:</Label>
           <Input
             autoComplete='none'
@@ -68,7 +70,7 @@ const LoginContainer = styled.div`
 `;
 
 const LoginWrapper = styled.div`
-  border: 3px solid lightgray;
+  /* border: 3px solid lightgray; */
   min-height: 400px;
   width: 60%;
   display: flex;
@@ -114,3 +116,22 @@ const SubmitButton = styled.button`
     background-color: #01417e;
   }
 `;
+
+// const handleLogin = (e) => {
+//   e.preventDefault();
+//   dispatch(loginUserAsync({ email, password }));
+//   history.push('/user-dashboard');
+// };
+
+// const handleLogin = async (e) => {
+//   e.preventDefault();
+
+//   try {
+//     dispatch(setIsLoadingUser(true));
+//     await firebaseAuth.signInWithEmailAndPassword(email, password);
+//     dispatch(setIsLoadingUser(false));
+//     history.push('/user-dashboard');
+//   } catch {
+//     console.log('we have problem');
+//   }
+// };

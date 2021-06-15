@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { firebaseAuth } from './firebase';
 import { useDispatch } from 'react-redux';
-import { setIsLoading, setCurrentUser } from './state/usersSlice';
+import { setCurrentUser } from './state/usersSlice';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Header from './components/Header';
@@ -16,11 +16,7 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
-      console.log('user log1', user);
-      dispatch(setIsLoading(true));
       dispatch(setCurrentUser(user));
-      console.log('user log2', user);
-      dispatch(setIsLoading(false));
     });
 
     return unsubscribe;

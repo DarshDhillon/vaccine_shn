@@ -5,8 +5,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const currentUser = useSelector((state) => state.usersSlice.currentUser);
   const isLoadingUser = useSelector((state) => state.usersSlice.isLoadingUser);
 
-  console.log(currentUser);
-
   return (
     <>
       {isLoadingUser ? (

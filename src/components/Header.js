@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 import shnLogo from '../assets/images/shn_logo_blue_text.png';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logoutCurrentUserAsync } from '../state/usersSlice';
+import { useSelector } from 'react-redux';
+import { firebaseAuth } from '../firebase';
 
 const Header = () => {
-  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.usersSlice.currentUser);
 
-  console.log(currentUser);
-
-  const handleLogoutUser = () => {
-    dispatch(logoutCurrentUserAsync());
+  const handleLogoutUser = async () => {
+    try {
+      firebaseAuth.signOut();
+    } catch {
+      alert('Error logging out');
+    }
   };
 
   return (
@@ -20,7 +21,7 @@ const Header = () => {
         <Link to='/'>
           <HeaderLogo alt='header_logo' src={shnLogo} />
         </Link>
-        <LogoutButton onClick={handleLogoutUser} isCurrentUser={currentUser}>
+        <LogoutButton onClick={handleLogoutUser} $isCurrentUser={currentUser}>
           Logout
         </LogoutButton>
       </HeaderImageWrapper>
@@ -53,7 +54,8 @@ const HeaderLogo = styled.img`
 `;
 
 const LogoutButton = styled.button`
-  opacity: ${(isCurrentUser) => (isCurrentUser ? '1' : '0')};
+  visibility: ${({ $isCurrentUser }) =>
+    $isCurrentUser ? 'visibile' : 'hidden'};
   padding: 0.5rem 1rem;
   background-color: #fff;
   color: #000;

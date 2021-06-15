@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { createNewUserAsync } from '../state/usersSlice';
+import { setIsLoadingUser } from '../state/usersSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
+import { firebaseAuth } from '../firebase';
 
 const SignUp = () => {
   const [signUpEmail, setSignUpEmail] = useState('');
@@ -11,19 +12,31 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(
-      createNewUserAsync({ email: signUpEmail, password: signUpPassword })
-    );
-    history.push('/user-dashboard');
+    dispatch(setIsLoadingUser(true));
+
+    try {
+      await firebaseAuth.createUserWithEmailAndPassword(
+        signUpEmail,
+        signUpPassword
+      );
+      dispatch(setIsLoadingUser(false));
+      history.push('/user-dashboard');
+    } catch {
+      setSignUpEmail('');
+      setSignUpPassword('');
+      setSignUpConfirmPassword('');
+      dispatch(setIsLoadingUser(false));
+      console.log('error creating user');
+    }
   };
 
   return (
     <SignUpContainer>
       <SignUpWrapper>
         <SignUpForm onSubmit={handleSubmit}>
-          <Heading>Sign Up</Heading>
+          <Heading>Sign up</Heading>
           <Label>Email:</Label>
           <Input
             autoComplete='none'
@@ -48,10 +61,25 @@ const SignUp = () => {
             value={signUpConfirmPassword}
             type='password'
           />
-          {signUpPassword !== signUpConfirmPassword && (
-            <p style={{ color: 'red' }}>Passwords do not match!</p>
+          {signUpPassword.length < 6 || signUpConfirmPassword.length < 6 ? (
+            <p style={{ color: 'red', fontWeight: 'bold' }}>
+              Password must be at least 6 characters!
+            </p>
+          ) : (
+            ''
           )}
-          <SubmitButton type='submit'>Create account</SubmitButton>
+
+          {signUpPassword !== signUpConfirmPassword && (
+            <p style={{ color: 'red', fontWeight: 'bold' }}>
+              Passwords do not match!
+            </p>
+          )}
+          <SubmitButton
+            disabled={signUpPassword === signUpConfirmPassword ? false : true}
+            type='submit'
+          >
+            Create account
+          </SubmitButton>
         </SignUpForm>
         <div>
           Already signed up? <Link to='/login'>Click here</Link>
@@ -73,7 +101,7 @@ const SignUpContainer = styled.div`
 `;
 
 const SignUpWrapper = styled.div`
-  border: 3px solid lightgray;
+  /* border: 3px solid lightgray; */
   min-height: 400px;
   width: 60%;
   display: flex;
@@ -111,12 +139,12 @@ const Heading = styled.h1`
 const SubmitButton = styled.button`
   padding: 0.5rem;
   font-size: 1.5rem;
-  background-color: #005eb8;
+  background-color: ${({ disabled }) => (disabled ? 'lightgrey' : '#005eb8')};
   color: #fff;
   border: none;
   cursor: pointer;
 
   :hover {
-    background-color: #01417e;
+    background-color: ${({ disabled }) => (disabled ? 'lightgrey' : '#01417e')};
   }
 `;
