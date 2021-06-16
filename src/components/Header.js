@@ -49,20 +49,22 @@ const HeaderImageWrapper = styled.div`
 `;
 
 const HeaderLogo = styled.img`
-  width: 180px;
   /* border: 1px solid white; */
+  width: 180px;
 `;
 
 const LogoutButton = styled.button`
   visibility: ${({ $isCurrentUser }) =>
     $isCurrentUser ? 'visibile' : 'hidden'};
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1.5rem;
   background-color: #fff;
-  color: #000;
+  color: #005eb8;
   text-decoration: none;
   cursor: pointer;
   position: absolute;
   bottom: 10px;
   right: 0;
   border: none;
+  font-size: 1rem;
+  font-weight: bold;
 `;

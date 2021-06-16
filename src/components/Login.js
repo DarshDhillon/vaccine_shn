@@ -8,6 +8,7 @@ import { firebaseAuth } from '../firebase';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -20,7 +21,7 @@ const Login = () => {
       dispatch(setIsLoadingUser(false));
       history.push('/user-dashboard');
     } catch {
-      console.log('we have a problem');
+      setErrorMessage('Login failed. Please try again.');
       dispatch(setIsLoadingUser(false));
       setEmail('');
       setPassword('');
@@ -34,6 +35,7 @@ const Login = () => {
           <Heading>Sign in</Heading>
           <Label>Email:</Label>
           <Input
+            autoFocus
             autoComplete='none'
             required
             value={email}
@@ -48,11 +50,19 @@ const Login = () => {
             value={password}
             type='password'
           />
-          <SubmitButton type='submit'>Login</SubmitButton>
+          <SubmitButton
+            disabled={password.length < 6 ? true : false}
+            type='submit'
+          >
+            Login
+          </SubmitButton>
         </LoginForm>
-        <div>
+        <ErrorContainer>
+          <ErrorMessage>{errorMessage}</ErrorMessage>
+        </ErrorContainer>
+        <Redirect>
           Need to sign up? <Link to='/sign-up'>Click here</Link>
-        </div>
+        </Redirect>
       </LoginWrapper>
     </LoginContainer>
   );
@@ -108,30 +118,23 @@ const Heading = styled.h1`
 const SubmitButton = styled.button`
   padding: 0.5rem;
   font-size: 1.5rem;
-  background-color: #005eb8;
+  background-color: ${({ disabled }) => (disabled ? 'lightgrey' : '#005eb8')};
+  cursor: pointer;
   color: #fff;
   border: none;
 
   :hover {
-    background-color: #01417e;
+    background-color: ${({ disabled }) => (disabled ? 'lightgrey' : '#01417e')};
   }
 `;
 
-// const handleLogin = (e) => {
-//   e.preventDefault();
-//   dispatch(loginUserAsync({ email, password }));
-//   history.push('/user-dashboard');
-// };
+const Redirect = styled.p`
+  font-style: italic;
+`;
 
-// const handleLogin = async (e) => {
-//   e.preventDefault();
+const ErrorContainer = styled.div``;
 
-//   try {
-//     dispatch(setIsLoadingUser(true));
-//     await firebaseAuth.signInWithEmailAndPassword(email, password);
-//     dispatch(setIsLoadingUser(false));
-//     history.push('/user-dashboard');
-//   } catch {
-//     console.log('we have problem');
-//   }
-// };
+const ErrorMessage = styled.p`
+  color: red;
+  font-weight: bold;
+`;

@@ -9,14 +9,18 @@ const SignUp = () => {
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [signUpConfirmPassword, setSignUpConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     dispatch(setIsLoadingUser(true));
 
     try {
+      setErrorMessage('');
       await firebaseAuth.createUserWithEmailAndPassword(
         signUpEmail,
         signUpPassword
@@ -28,7 +32,7 @@ const SignUp = () => {
       setSignUpPassword('');
       setSignUpConfirmPassword('');
       dispatch(setIsLoadingUser(false));
-      console.log('error creating user');
+      setErrorMessage('Error creating user. Please try again.');
     }
   };
 
@@ -39,6 +43,7 @@ const SignUp = () => {
           <Heading>Sign up</Heading>
           <Label>Email:</Label>
           <Input
+            autoFocus
             autoComplete='none'
             required
             value={signUpEmail}
@@ -61,29 +66,27 @@ const SignUp = () => {
             value={signUpConfirmPassword}
             type='password'
           />
-          {signUpPassword.length < 6 || signUpConfirmPassword.length < 6 ? (
-            <p style={{ color: 'red', fontWeight: 'bold' }}>
-              Password must be at least 6 characters!
-            </p>
-          ) : (
-            ''
-          )}
-
-          {signUpPassword !== signUpConfirmPassword && (
-            <p style={{ color: 'red', fontWeight: 'bold' }}>
-              Passwords do not match!
-            </p>
-          )}
           <SubmitButton
-            disabled={signUpPassword === signUpConfirmPassword ? false : true}
+            $deactive={signUpPassword === signUpConfirmPassword ? false : true}
             type='submit'
           >
             Create account
           </SubmitButton>
         </SignUpForm>
-        <div>
+        <ErrorContainer>
+          {signUpPassword.length < 6 || signUpConfirmPassword.length < 6 ? (
+            <ErrorMessage>Password must be at least 6 characters</ErrorMessage>
+          ) : (
+            ''
+          )}
+          {signUpPassword !== signUpConfirmPassword && (
+            <ErrorMessage>Passwords do not match</ErrorMessage>
+          )}
+          <ErrorMessage>{errorMessage}</ErrorMessage>
+        </ErrorContainer>
+        <Redirect>
           Already signed up? <Link to='/login'>Click here</Link>
-        </div>
+        </Redirect>
       </SignUpWrapper>
     </SignUpContainer>
   );
@@ -139,12 +142,28 @@ const Heading = styled.h1`
 const SubmitButton = styled.button`
   padding: 0.5rem;
   font-size: 1.5rem;
-  background-color: ${({ disabled }) => (disabled ? 'lightgrey' : '#005eb8')};
+  background-color: ${({ $deactive }) => ($deactive ? 'lightgrey' : '#005eb8')};
   color: #fff;
   border: none;
   cursor: pointer;
 
   :hover {
-    background-color: ${({ disabled }) => (disabled ? 'lightgrey' : '#01417e')};
+    background-color: ${({ $deactive }) =>
+      $deactive ? 'lightgrey' : '#01417e'};
   }
+`;
+
+const ErrorContainer = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  /* font-weight: bold; */
+`;
+
+const Redirect = styled.p`
+  font-style: italic;
 `;
