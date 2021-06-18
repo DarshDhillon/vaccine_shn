@@ -4,6 +4,8 @@ import { setIsLoadingUser } from '../state/usersSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { firebaseAuth } from '../firebase';
+import { BsEye } from 'react-icons/bs';
+import { BsEyeSlash } from 'react-icons/bs';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +13,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -48,7 +51,7 @@ const Login = () => {
             required
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            type='password'
+            type={showPassword ? 'text' : 'password'}
           />
           <SubmitButton
             disabled={password.length < 6 ? true : false}
@@ -56,6 +59,9 @@ const Login = () => {
           >
             Login
           </SubmitButton>
+          <ShowPasswordWrapper onClick={() => setShowPassword((prev) => !prev)}>
+            {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
+          </ShowPasswordWrapper>
         </LoginForm>
         <ErrorContainer>
           <ErrorMessage>{errorMessage}</ErrorMessage>
@@ -95,6 +101,7 @@ const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  position: relative;
 `;
 
 const Label = styled.label`
@@ -137,4 +144,23 @@ const ErrorContainer = styled.div``;
 const ErrorMessage = styled.p`
   color: red;
   font-weight: bold;
+`;
+
+const ShowPasswordIcon = styled(BsEye)`
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #005eb8;
+`;
+
+const HidePasswordIcon = styled(BsEyeSlash)`
+  cursor: pointer;
+
+  font-size: 1.5rem;
+  color: #005eb8;
+`;
+
+const ShowPasswordWrapper = styled.div`
+  position: absolute;
+  right: 1rem;
+  top: 55%;
 `;

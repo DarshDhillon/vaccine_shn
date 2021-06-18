@@ -29,15 +29,15 @@ const UserDashboard = () => {
       });
   };
 
-  const handleSetFirstName = () => {
-    firebaseDatabase.users.doc(currentUserUid).set({
-      firstName: 'Marlon',
-      lastName: 'Brando',
-      age: 40,
-      alive: false,
-      date: new Date().getDate(),
-    });
-  };
+  // const handleSetFirstName = () => {
+  //   firebaseDatabase.users.doc(currentUserUid).set({
+  //     firstName: 'Marlon',
+  //     lastName: 'Brando',
+  //     age: 40,
+  //     alive: false,
+  //     date: new Date().getDate(),
+  //   });
+  // };
 
   // const handleGetName = () => {
   //   firebaseDatabase.users.add.currentUserUid({
@@ -69,9 +69,7 @@ const UserDashboard = () => {
       <h1>Welcome back, {currentUser.displayName}</h1>
       <p>Your user ID is {currentUserUid}</p>
 
-      <button onClick={getInfo}>Get firstName?</button>
-
-      <button onClick={handleSetFirstName}>Set first name</button>
+      <button onClick={getInfo}>Get info</button>
     </div>
   );
 };

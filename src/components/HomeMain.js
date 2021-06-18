@@ -17,7 +17,8 @@ const HomeMain = () => {
           local SHN service, you do not need to book again using this service.
         </SubHeading>
         <ButtonWrapper>
-          <Button to='/sign-up'>Book my appointment</Button>
+          {/* <Button to='/sign-up'>Book my appointment</Button> */}
+          <Button to='/testing'>Go to test page</Button>
           <Button to='/login' $secondary>
             Manage my appointment
           </Button>

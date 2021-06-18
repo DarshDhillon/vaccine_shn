@@ -67,4 +67,8 @@ const LogoutButton = styled.button`
   border: none;
   font-size: 1rem;
   font-weight: bold;
+
+  :hover {
+    background-color: #d3cfcf;
+  }
 `;

@@ -10,6 +10,8 @@ import GlobalStyle from './utils/GlobalStyle';
 import HomeMain from './components/HomeMain';
 import PrivateRoute from './components/PrivateRoute';
 import UserDashboard from './components/UserDashboard';
+import CreateAppointment from './components/CreateAppointment';
+import Testing from './components/Testing';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,10 +29,15 @@ const App = () => {
       <GlobalStyle />
       <Header />
       <Switch>
+        <Route path='/testing' component={Testing} />
         <Route exact path='/' component={HomeMain} />
         <Route path='/sign-up' component={SignUp} />
         <Route path='/login' component={Login} />
         <PrivateRoute path='/user-dashboard' component={UserDashboard} />
+        <PrivateRoute
+          path='/create-appointment'
+          component={CreateAppointment}
+        />
       </Switch>
     </Router>
   );

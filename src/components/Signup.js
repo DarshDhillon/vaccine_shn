@@ -4,12 +4,15 @@ import { setIsLoadingUser } from '../state/usersSlice';
 import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { firebaseAuth } from '../firebase';
+import { BsEye } from 'react-icons/bs';
+import { BsEyeSlash } from 'react-icons/bs';
 
 const SignUp = () => {
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [signUpConfirmPassword, setSignUpConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -26,7 +29,7 @@ const SignUp = () => {
         signUpPassword
       );
       dispatch(setIsLoadingUser(false));
-      history.push('/user-dashboard');
+      history.push('/create-appointment');
     } catch {
       setSignUpEmail('');
       setSignUpPassword('');
@@ -56,7 +59,7 @@ const SignUp = () => {
             required
             onChange={(e) => setSignUpPassword(e.target.value)}
             value={signUpPassword}
-            type='password'
+            type={showPassword ? 'text' : 'password'}
           />
           <Label>Confirm password:</Label>
           <Input
@@ -64,7 +67,7 @@ const SignUp = () => {
             onChange={(e) => setSignUpConfirmPassword(e.target.value)}
             required
             value={signUpConfirmPassword}
-            type='password'
+            type={showPassword ? 'text' : 'password'}
           />
           <SubmitButton
             $deactive={signUpPassword === signUpConfirmPassword ? false : true}
@@ -72,6 +75,9 @@ const SignUp = () => {
           >
             Create account
           </SubmitButton>
+          <ShowPasswordWrapper onClick={() => setShowPassword((prev) => !prev)}>
+            {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
+          </ShowPasswordWrapper>
         </SignUpForm>
         <ErrorContainer>
           {signUpPassword.length < 6 || signUpConfirmPassword.length < 6 ? (
@@ -119,6 +125,7 @@ const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  position: relative;
 `;
 
 const Label = styled.label`
@@ -166,4 +173,23 @@ const ErrorMessage = styled.p`
 
 const Redirect = styled.p`
   font-style: italic;
+`;
+
+const ShowPasswordIcon = styled(BsEye)`
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #005eb8;
+`;
+
+const HidePasswordIcon = styled(BsEyeSlash)`
+  cursor: pointer;
+
+  font-size: 1.5rem;
+  color: #005eb8;
+`;
+
+const ShowPasswordWrapper = styled.div`
+  position: absolute;
+  right: 1rem;
+  top: 40%;
 `;
