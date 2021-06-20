@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <>
       {isLoadingUser ? (
-        <p>loading...</p>
+        <p>Loading...</p>
       ) : (
         <Route
           {...rest}

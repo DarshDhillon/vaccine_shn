@@ -53,7 +53,7 @@ const GoogleMap = () => {
       searchBox.addListener('places_changed', () => {
         const places = searchBox.getPlaces();
 
-        if (places.length == 0) {
+        if (places.length === 0) {
           return;
         }
         markers.forEach((marker) => {
@@ -92,7 +92,7 @@ const GoogleMap = () => {
       });
     })
     .catch((e) => {
-      console.log(e);
+      console.error(e);
     });
 
   const handleGetLocation = () => {
@@ -131,10 +131,7 @@ const GoogleMap = () => {
 
   return (
     <MapContainer>
-      <MapWrapper
-        style={{ height: '600px', width: '600px' }}
-        id='map'
-      ></MapWrapper>
+      <MapWrapper id='map' />
       <LocationInput
         onClick={(e) => (e.target.value = '')}
         autoFocus
@@ -151,7 +148,10 @@ export default GoogleMap;
 
 const MapContainer = styled.div``;
 
-const MapWrapper = styled.div``;
+const MapWrapper = styled.div`
+  height: 600px;
+  width: 600px;
+`;
 
 const LocationInput = styled.input`
   outline: none;

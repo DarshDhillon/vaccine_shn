@@ -11,7 +11,8 @@ import HomeMain from './components/HomeMain';
 import PrivateRoute from './components/PrivateRoute';
 import UserDashboard from './components/UserDashboard';
 import CreateAppointment from './components/CreateAppointment';
-import Testing from './components/Testing';
+import CreateAppointmentPersonalInfo from './components/CreateAppointmentPersonalInfo';
+import CreateAppointmentLocation from './components/CreateAppointmentLocation';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
       dispatch(setCurrentUser(user));
+      console.log(user);
     });
 
     return unsubscribe;
@@ -29,14 +31,22 @@ const App = () => {
       <GlobalStyle />
       <Header />
       <Switch>
-        <Route path='/testing' component={Testing} />
         <Route exact path='/' component={HomeMain} />
         <Route path='/sign-up' component={SignUp} />
         <Route path='/login' component={Login} />
         <PrivateRoute path='/user-dashboard' component={UserDashboard} />
-        <PrivateRoute
+        {/* <PrivateRoute
           path='/create-appointment'
           component={CreateAppointment}
+        /> */}
+        <Route
+          path='/create-appointment-personal-info'
+          component={CreateAppointmentPersonalInfo}
+        />
+        <Route path='/create-appointment' component={CreateAppointment} />
+        <Route
+          path='/create-appointment-choose-location'
+          component={CreateAppointmentLocation}
         />
       </Switch>
     </Router>

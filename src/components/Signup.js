@@ -168,7 +168,7 @@ const ErrorContainer = styled.div`
 
 const ErrorMessage = styled.p`
   color: red;
-  /* font-weight: bold; */
+  font-weight: bold;
 `;
 
 const Redirect = styled.p`

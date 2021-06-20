@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 import shnLogo from '../assets/images/shn_logo_blue_text.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { firebaseAuth } from '../firebase';
 
 const Header = () => {
+  const history = useHistory();
   const currentUser = useSelector((state) => state.usersSlice.currentUser);
 
   const handleLogoutUser = async () => {
     try {
       firebaseAuth.signOut();
+      history.push('/');
     } catch {
       alert('Error logging out');
     }
