@@ -13,6 +13,7 @@ import UserDashboard from './components/UserDashboard';
 import CreateAppointment from './components/CreateAppointment';
 import CreateAppointmentPersonalInfo from './components/CreateAppointmentPersonalInfo';
 import CreateAppointmentLocation from './components/CreateAppointmentLocation';
+import ScrollToTop from './utils/ScrollToTop';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <GlobalStyle />
       <Header />
       <Switch>
@@ -40,12 +42,14 @@ const App = () => {
           component={CreateAppointment}
         /> */}
         <Route
-          path='/create-appointment-personal-info'
+          exact
+          path='/create-appointment/personal-info'
           component={CreateAppointmentPersonalInfo}
         />
-        <Route path='/create-appointment' component={CreateAppointment} />
+        <Route exact path='/create-appointment' component={CreateAppointment} />
         <Route
-          path='/create-appointment-choose-location'
+          exact
+          path='/create-appointment/choose-location'
           component={CreateAppointmentLocation}
         />
       </Switch>

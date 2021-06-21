@@ -10,7 +10,7 @@ const CreateAppointmentPersonalInfo = () => {
   return (
     <MainContainer>
       <HeadingsWrapper>
-        <Heading>Steps to create your vaccine appointment:</Heading>
+        <Heading>Enter your personal information:</Heading>
       </HeadingsWrapper>
       <PersonalInfoForm />
     </MainContainer>

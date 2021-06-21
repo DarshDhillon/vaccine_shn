@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import GoogleMap from './GoogleMap';
+import MapSection from './MapSection';
 
 const CreateAppointmentLocation = () => {
   return (
@@ -8,9 +8,9 @@ const CreateAppointmentLocation = () => {
         <Heading>Choose where and when your appointment is:</Heading>
         <SubHeadingSection></SubHeadingSection>
       </HeadingsWrapper>
-      <MapSection>
-        <GoogleMap />
-      </MapSection>
+      <MapContainer>
+        <MapSection />
+      </MapContainer>
     </MainContainer>
   );
 };
@@ -18,11 +18,10 @@ const CreateAppointmentLocation = () => {
 export default CreateAppointmentLocation;
 
 const MainContainer = styled.div`
-  /* border: 1px solid black; */
+  border: 1px solid red;
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* background-color: #f0f4f5; */
 `;
 
 const HeadingsWrapper = styled.div`
@@ -49,26 +48,9 @@ const SubHeading = styled.h2`
   margin-bottom: 0.5rem;
 `;
 
-const MapSection = styled.div`
+const MapContainer = styled.div`
   border: 1px solid black;
   padding: 2rem 1rem;
   width: 70%;
   margin: 0 auto;
-`;
-
-const StepIconWrapper = styled.div`
-  display: flex;
-  /* justify-content: flex-end; */
-  align-items: center;
-  text-align: center;
-  margin-bottom: 2rem;
-`;
-
-const StepIcon = styled.h1`
-  width: 50px;
-  height: 50px;
-  font-size: 2rem;
-  background: #005eb8;
-  color: #fff;
-  border-radius: 50%;
 `;

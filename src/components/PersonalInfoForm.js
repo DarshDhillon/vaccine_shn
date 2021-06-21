@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import HonorificsList from '../utils/Honorifics';
+import HonorificsData from '../utils/HonorificsData';
 import { useSelector } from 'react-redux';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const PersonalInfoForm = () => {
   const currentUser = useSelector((state) => state.usersSlice.currentUser);
   const [day, setDay] = useState(new Date());
+  const history = useHistory();
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    history.push('/create-appointment/choose-location');
+  };
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -16,11 +22,11 @@ const PersonalInfoForm = () => {
         <StepIconWrapper>
           <StepIcon>1</StepIcon>
         </StepIconWrapper>
-        <InfoForm>
+        <InfoForm onSubmit={handleSubmitForm}>
           <InfoDetail>
             <label>Title:</label>
             <Selector>
-              {HonorificsList.map((honorific, index) => (
+              {HonorificsData.map((honorific, index) => (
                 <Option key={index}>{honorific}</Option>
               ))}
             </Selector>
@@ -48,8 +54,8 @@ const PersonalInfoForm = () => {
             <Label>Email: </Label>
             <Email>{currentUser && currentUser.email}</Email>
           </InfoDetail>
-          <ButtonWrapper to='/create-appointment-choose-location'>
-            <SaveButton>Save my details</SaveButton>
+          <ButtonWrapper>
+            <SaveButton type='submit'>SAVE</SaveButton>
           </ButtonWrapper>
         </InfoForm>
       </InfoContainer>
@@ -107,7 +113,7 @@ const Email = styled.p`
   color: grey;
 `;
 
-const ButtonWrapper = styled(Link)`
+const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -115,30 +121,33 @@ const ButtonWrapper = styled(Link)`
 `;
 
 const SaveButton = styled.button`
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background: #005eb8;
-  border: none;
-  outline: none;
+  background-color: #007f3b;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 4px 0 #00401e;
   color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
   cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  vertical-align: top;
+  width: auto;
+  text-decoration: none;
 
   :hover {
-    background: #2871b6;
+    background-color: #046933;
   }
 `;
 
 const StepIconWrapper = styled.div`
   display: flex;
-  /* justify-content: flex-end; */
-  align-items: center;
-  text-align: center;
   margin-bottom: 2rem;
 `;
 
 const StepIcon = styled.h1`
+  text-align: center;
   width: 50px;
   height: 50px;
   font-size: 2rem;

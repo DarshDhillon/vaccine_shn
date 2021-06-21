@@ -1,7 +1,12 @@
 import { Loader } from '@googlemaps/js-api-loader';
 import styled from 'styled-components';
+import SelectedMapDetails from './SelectedMapDetails';
+import { setSelectedAppointmentDetails } from '../state/usersSlice';
+import { useDispatch } from 'react-redux';
 
-const GoogleMap = () => {
+const MapSection = () => {
+  const dispatch = useDispatch();
+
   let map, infoWindow;
 
   const mapOptions = {
@@ -35,6 +40,15 @@ const GoogleMap = () => {
           placesService.getDetails(
             { placeId: event.placeId },
             (place, status) => {
+              dispatch(
+                setSelectedAppointmentDetails({
+                  locationName: place.name,
+                  locationAddress: place.formatted_address,
+                  locationPhoneNumber: place.formatted_phone_number
+                    ? place.formatted_phone_number
+                    : 'No number available',
+                })
+              );
               console.log(place);
             }
           );
@@ -130,21 +144,25 @@ const GoogleMap = () => {
   };
 
   return (
-    <MapContainer>
-      <MapWrapper id='map' />
-      <LocationInput
-        onClick={(e) => (e.target.value = '')}
-        autoFocus
-        id='location-input'
-      />
-      <GoToMyLocationButton onClick={handleGetLocation}>
-        Go to my area
-      </GoToMyLocationButton>
-    </MapContainer>
+    <MapSectionContainer>
+      <MapContainer>
+        <MapWrapper id='map' />
+        <LocationInput
+          onClick={(e) => (e.target.value = '')}
+          autoFocus
+          id='location-input'
+        />
+      </MapContainer>
+      <SelectedMapDetails handleGetLocation={handleGetLocation} />
+    </MapSectionContainer>
   );
 };
 
-export default GoogleMap;
+export default MapSection;
+
+const MapSectionContainer = styled.div`
+  display: flex;
+`;
 
 const MapContainer = styled.div``;
 
@@ -155,6 +173,10 @@ const MapWrapper = styled.div`
 
 const LocationInput = styled.input`
   outline: none;
-`;
+  font-size: 1.3rem;
 
-const GoToMyLocationButton = styled.button``;
+  ::placeholder {
+    font-weight: bold;
+    color: #005eb8;
+  }
+`;

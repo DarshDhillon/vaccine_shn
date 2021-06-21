@@ -1,4 +1,4 @@
-const HonorificsList = [
+const HonorificsData = [
   'Mr',
   'Mrs',
   'Miss',
@@ -16,4 +16,4 @@ const HonorificsList = [
   'Master Jedi',
 ];
 
-export default HonorificsList;
+export default HonorificsData;

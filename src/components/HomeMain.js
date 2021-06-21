@@ -18,9 +18,9 @@ const HomeMain = () => {
         </SubHeading>
         <ButtonWrapper>
           {/* <Button to='/sign-up'>Book my appointment</Button> */}
-          <Button to='/create-appointment'>create appointment testing</Button>
+          <Button to='/create-appointment'>CREATE APPT TESTING</Button>
           <Button to='/login' $secondary>
-            Manage my appointment
+            MANAGE MY APPOINTMENT
           </Button>
         </ButtonWrapper>
       </MainWrapper>
@@ -77,7 +77,7 @@ const Button = styled(Link)`
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 0;
-  padding: 1.3rem 1.8rem;
+  padding: 1rem 1.5rem;
   text-align: center;
   vertical-align: top;
   width: auto;

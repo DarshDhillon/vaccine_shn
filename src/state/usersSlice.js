@@ -6,6 +6,11 @@ const usersSlice = createSlice({
     isLoading: false,
     isLoadingUser: false,
     currentUser: null,
+    selectedAppointmentLocation: {
+      locationName: '',
+      locationAddress: '',
+      locationPhoneNumber: '',
+    },
   },
   reducers: {
     setIsLoading: (state, { payload }) => {
@@ -17,10 +22,21 @@ const usersSlice = createSlice({
     setIsLoadingUser: (state, { payload }) => {
       state.isLoadingUser = payload;
     },
+    setSelectedAppointmentDetails: (state, { payload }) => {
+      state.selectedAppointmentLocation.locationName = payload.locationName;
+      state.selectedAppointmentLocation.locationAddress =
+        payload.locationAddress;
+      state.selectedAppointmentLocation.locationPhoneNumber =
+        payload.locationPhoneNumber;
+    },
   },
 });
 
-export const { setIsLoading, setCurrentUser, setIsLoadingUser } =
-  usersSlice.actions;
+export const {
+  setIsLoading,
+  setCurrentUser,
+  setIsLoadingUser,
+  setSelectedAppointmentDetails,
+} = usersSlice.actions;
 
 export default usersSlice.reducer;

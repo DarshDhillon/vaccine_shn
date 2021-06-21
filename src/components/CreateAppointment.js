@@ -19,7 +19,7 @@ const CreateAppointment = () => {
           </SubHeading>
         </SubHeadingSection>
         <ButtonWrapper>
-          <Button to='/create-appointment-personal-info'>START</Button>
+          <Button to='/create-appointment/personal-info'>START</Button>
         </ButtonWrapper>
       </HeadingsWrapper>
     </MainContainer>
@@ -52,7 +52,7 @@ const Heading = styled.h1`
 
 const SubHeadingSection = styled.div`
   padding: 0 1rem;
-  /* margin-bottom: 2rem; */
+  margin-bottom: 2rem;
 `;
 
 const SubHeading = styled.h2`
@@ -63,9 +63,11 @@ const SubHeading = styled.h2`
 const ButtonWrapper = styled.div`
   /* border: 1px solid red; */
   display: flex;
-  width: 70%;
+  /* width: 50%; */
   padding: 1rem;
-  justify-content: space-around;
+  margin: 0 auto;
+
+  /* justify-content: space-around; */
   /* margin: 0 auto; */
 `;
 
@@ -79,7 +81,7 @@ const Button = styled(Link)`
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 0;
-  padding: 1.3rem 1.8rem;
+  padding: 1rem 1.5rem;
   text-align: center;
   vertical-align: top;
   width: auto;
