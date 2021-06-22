@@ -6,10 +6,17 @@ const usersSlice = createSlice({
     isLoading: false,
     isLoadingUser: false,
     currentUser: null,
-    selectedAppointmentLocation: {
+    selectedAppointmentDetails: {
       locationName: '',
       locationAddress: '',
       locationPhoneNumber: '',
+      appointmentDate: '',
+      appointmentTime: '',
+    },
+    newUserPersonalInfo: {
+      firstName: '',
+      secondName: '',
+      dateOfBirth: '',
     },
   },
   reducers: {
@@ -22,12 +29,26 @@ const usersSlice = createSlice({
     setIsLoadingUser: (state, { payload }) => {
       state.isLoadingUser = payload;
     },
-    setSelectedAppointmentDetails: (state, { payload }) => {
-      state.selectedAppointmentLocation.locationName = payload.locationName;
-      state.selectedAppointmentLocation.locationAddress =
+
+    setSelectedAppointmentLocation: (state, { payload }) => {
+      state.selectedAppointmentDetails.locationName = payload.locationName;
+      state.selectedAppointmentDetails.locationAddress =
         payload.locationAddress;
-      state.selectedAppointmentLocation.locationPhoneNumber =
+      state.selectedAppointmentDetails.locationPhoneNumber =
         payload.locationPhoneNumber;
+    },
+
+    setSelectedAppointmentDateAndTime: (state, { payload }) => {
+      state.selectedAppointmentDetails.appointmentDate =
+        payload.appointmentDate;
+      state.selectedAppointmentDetails.appointmentTime =
+        payload.appointmentTime;
+    },
+
+    setNewUserPersonalInfo: (state, { payload }) => {
+      state.newUserPersonalInfo.firstName = payload.firstName;
+      state.newUserPersonalInfo.secondName = payload.secondName;
+      state.newUserPersonalInfo.dateOfBirth = payload.dateOfBirth;
     },
   },
 });
@@ -36,7 +57,31 @@ export const {
   setIsLoading,
   setCurrentUser,
   setIsLoadingUser,
-  setSelectedAppointmentDetails,
+  setSelectedAppointmentLocation,
+  setSelectedAppointmentDateAndTime,
+  setNewUserPersonalInfo,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;
+
+// setSelectedAppointmentDetails: (state, { payload }) => {
+//   state.selectedAppointmentDetails.locationName = payload.locationName;
+//   state.selectedAppointmentDetails.locationAddress =
+//     payload.locationAddress;
+//   state.selectedAppointmentDetails.locationPhoneNumber =
+//     payload.locationPhoneNumber;
+//   state.selectedAppointmentDetails.appointmentDate =
+//     payload.appointmentDate;
+//   state.selectedAppointmentDetails.appointmentTime =
+//     payload.appointmentTime;
+// },
+
+// setSelectedAppointmentDetails: (state, { payload }) => {
+//   return {
+//     locationName: payload.locationName,
+//     locationAddress: payload.locationAddress,
+//     locationPhoneNumber: payload.locationPhoneNumber,
+//     appointmentDate: payload.appointmentDate,
+//     appointmentTime: payload.appointmentTime,
+//   };
+// },

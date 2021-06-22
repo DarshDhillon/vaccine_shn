@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 const SelectedMapDetails = ({ handleGetLocation }) => {
-  const selectedAppointmentLocation = useSelector(
-    (state) => state.usersSlice.selectedAppointmentLocation
+  const selectedAppointmentDetails = useSelector(
+    (state) => state.usersSlice.selectedAppointmentDetails
   );
 
   return (
@@ -25,25 +25,25 @@ const SelectedMapDetails = ({ handleGetLocation }) => {
           search (example: "hospital")
         </SubHeading>
         <SubHeading $lighter>
-          3. Click the hospital/practice of your choice
+          3. Zoom in and click the hospital/practice of your choice
         </SubHeading>
-        {selectedAppointmentLocation.locationName && (
+        {selectedAppointmentDetails.locationName && (
           <SelectedLocationDetails>
             <SelectedLocationHeading>
               You have selected:
             </SelectedLocationHeading>
-            <SelectedLocationName>
-              Name:
-              {selectedAppointmentLocation.locationName}
-            </SelectedLocationName>
-            <SelectedLocationAddress>
-              Address:
-              {selectedAppointmentLocation.locationAddress}
-            </SelectedLocationAddress>
-            <SelectedLocationPhoneNumber>
-              Phone:
-              {selectedAppointmentLocation.locationPhoneNumber}
-            </SelectedLocationPhoneNumber>
+            <SelectedLabel>Name:</SelectedLabel>
+            <SelectedInfo>
+              {selectedAppointmentDetails.locationName}
+            </SelectedInfo>
+            <SelectedLabel>Address:</SelectedLabel>
+            <SelectedInfo>
+              {selectedAppointmentDetails.locationAddress}
+            </SelectedInfo>
+            <SelectedLabel>Phone:</SelectedLabel>
+            <SelectedInfo>
+              {selectedAppointmentDetails.locationPhoneNumber}
+            </SelectedInfo>
           </SelectedLocationDetails>
         )}
       </DetailsWrapper>
@@ -60,7 +60,9 @@ const DetailsContainer = styled.div`
 `;
 
 const DetailsWrapper = styled.div`
-  width: 80%;
+  border: 1px solid red;
+  /* width: 80%; */
+  padding: 0rem 1rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -109,24 +111,25 @@ const StepIcon = styled.h1`
 
 const SubHeading = styled.h3`
   font-weight: ${({ $lighter }) => $lighter && 'lighter'};
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 
 const SelectedLocationDetails = styled.div`
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
 `;
 
-const SelectedLocationHeading = styled.h2``;
-
-const SelectedLocationName = styled.p`
-  color: #005eb8;
+const SelectedLocationHeading = styled.h2`
+  margin-bottom: 1rem;
 `;
 
-const SelectedLocationAddress = styled.p`
+const SelectedInfo = styled.h2`
   color: #005eb8;
+  font-weight: bold;
+  margin-bottom: 1rem;
 `;
 
-const SelectedLocationPhoneNumber = styled.p`
-  color: #005eb8;
+const SelectedLabel = styled.label`
+  color: #000;
 `;

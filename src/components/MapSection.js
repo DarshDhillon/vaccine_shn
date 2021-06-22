@@ -1,7 +1,7 @@
 import { Loader } from '@googlemaps/js-api-loader';
 import styled from 'styled-components';
 import SelectedMapDetails from './SelectedMapDetails';
-import { setSelectedAppointmentDetails } from '../state/usersSlice';
+import { setSelectedAppointmentLocation } from '../state/usersSlice';
 import { useDispatch } from 'react-redux';
 
 const MapSection = () => {
@@ -41,7 +41,7 @@ const MapSection = () => {
             { placeId: event.placeId },
             (place, status) => {
               dispatch(
-                setSelectedAppointmentDetails({
+                setSelectedAppointmentLocation({
                   locationName: place.name,
                   locationAddress: place.formatted_address,
                   locationPhoneNumber: place.formatted_phone_number
@@ -49,7 +49,6 @@ const MapSection = () => {
                     : 'No number available',
                 })
               );
-              console.log(place);
             }
           );
         }
@@ -145,6 +144,7 @@ const MapSection = () => {
 
   return (
     <MapSectionContainer>
+      <SelectedMapDetails handleGetLocation={handleGetLocation} />
       <MapContainer>
         <MapWrapper id='map' />
         <LocationInput
@@ -153,7 +153,6 @@ const MapSection = () => {
           id='location-input'
         />
       </MapContainer>
-      <SelectedMapDetails handleGetLocation={handleGetLocation} />
     </MapSectionContainer>
   );
 };

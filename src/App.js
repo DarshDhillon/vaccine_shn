@@ -14,6 +14,7 @@ import CreateAppointment from './components/CreateAppointment';
 import CreateAppointmentPersonalInfo from './components/CreateAppointmentPersonalInfo';
 import CreateAppointmentLocation from './components/CreateAppointmentLocation';
 import ScrollToTop from './utils/ScrollToTop';
+import NewAppointmentConfirmation from './components/NewAppointmentConfirmation';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,11 @@ const App = () => {
           exact
           path='/create-appointment/choose-location'
           component={CreateAppointmentLocation}
+        />
+        <Route
+          path='/create-appointment/confirmation'
+          exact
+          component={NewAppointmentConfirmation}
         />
       </Switch>
     </Router>

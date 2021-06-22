@@ -1,18 +1,31 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import HonorificsData from '../utils/HonorificsData';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setNewUserPersonalInfo } from '../state/usersSlice';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
 const PersonalInfoForm = () => {
   const currentUser = useSelector((state) => state.usersSlice.currentUser);
-  const [day, setDay] = useState(new Date());
   const history = useHistory();
+  const [day, setDay] = useState(new Date());
+  const [firstName, setFirstName] = useState('');
+  const [secondName, setSecondName] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
+    dispatch(
+      setNewUserPersonalInfo({
+        firstName,
+        secondName,
+        dateOfBirth: moment(day).format('DD/MM/YYYY'),
+      })
+    );
+
     history.push('/create-appointment/choose-location');
   };
 
@@ -33,11 +46,22 @@ const PersonalInfoForm = () => {
           </InfoDetail>
           <InfoDetail>
             <Label>First name: </Label>
-            <Input required type='text'></Input>
+            <Input
+              autoFocus
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+              type='text'
+            />
           </InfoDetail>
           <InfoDetail>
             <Label>Second name: </Label>
-            <Input required type='text'></Input>
+            <Input
+              value={secondName}
+              onChange={(e) => setSecondName(e.target.value)}
+              required
+              type='text'
+            />
           </InfoDetail>
           <InfoDetail>
             <Label>Date of birth: </Label>
@@ -106,6 +130,7 @@ const Input = styled.input`
   outline: none;
   border: 1px solid #005eb8;
   margin-left: auto;
+  text-transform: capitalize;
 `;
 
 const Email = styled.p`
