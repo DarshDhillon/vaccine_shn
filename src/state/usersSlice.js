@@ -50,6 +50,23 @@ const usersSlice = createSlice({
       state.newUserPersonalInfo.secondName = payload.secondName;
       state.newUserPersonalInfo.dateOfBirth = payload.dateOfBirth;
     },
+    resetAllAppointmentDetails: (state) => {
+      return {
+        ...state,
+        selectedAppointmentDetails: {
+          locationName: '',
+          locationAddress: '',
+          locationPhoneNumber: '',
+          appointmentDate: '',
+          appointmentTime: '',
+        },
+        newUserPersonalInfo: {
+          firstName: '',
+          secondName: '',
+          dateOfBirth: '',
+        },
+      };
+    },
   },
 });
 
@@ -60,6 +77,7 @@ export const {
   setSelectedAppointmentLocation,
   setSelectedAppointmentDateAndTime,
   setNewUserPersonalInfo,
+  resetAllAppointmentDetails,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

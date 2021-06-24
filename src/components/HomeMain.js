@@ -18,7 +18,7 @@ const HomeMain = () => {
         </SubHeading>
         <ButtonWrapper>
           {/* <Button to='/sign-up'>Book my appointment</Button> */}
-          <Button to='/create-appointment'>CREATE APPT TESTING</Button>
+          <Button to='/sign-up'>CREATE MY APPOINTMENT</Button>
           <Button to='/login' $secondary>
             MANAGE MY APPOINTMENT
           </Button>

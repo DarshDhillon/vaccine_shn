@@ -5,7 +5,7 @@ const CreateAppointment = () => {
   return (
     <MainContainer>
       <HeadingsWrapper>
-        <Heading>Steps to create your vaccine appointment:</Heading>
+        <Heading>Steps to create your vaccine appointment</Heading>
         <SubHeadingSection>
           <SubHeading $lighter>1. Enter your personal information</SubHeading>
           <SubHeading $lighter>

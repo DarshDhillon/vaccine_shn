@@ -22,7 +22,6 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
       dispatch(setCurrentUser(user));
-      console.log(user);
     });
 
     return unsubscribe;
@@ -35,25 +34,25 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path='/' component={HomeMain} />
-        <Route path='/sign-up' component={SignUp} />
-        <Route path='/login' component={Login} />
-        <PrivateRoute path='/user-dashboard' component={UserDashboard} />
-        {/* <PrivateRoute
+        <Route exact path='/sign-up' component={SignUp} />
+        <Route exact path='/login' component={Login} />
+        <PrivateRoute exact path='/user-dashboard' component={UserDashboard} />
+        <PrivateRoute
+          exact
           path='/create-appointment'
           component={CreateAppointment}
-        /> */}
-        <Route
+        />
+        <PrivateRoute
           exact
           path='/create-appointment/personal-info'
           component={CreateAppointmentPersonalInfo}
         />
-        <Route exact path='/create-appointment' component={CreateAppointment} />
-        <Route
+        <PrivateRoute
           exact
           path='/create-appointment/choose-location'
           component={CreateAppointmentLocation}
         />
-        <Route
+        <PrivateRoute
           path='/create-appointment/confirmation'
           exact
           component={NewAppointmentConfirmation}

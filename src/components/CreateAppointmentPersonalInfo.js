@@ -10,7 +10,7 @@ const CreateAppointmentPersonalInfo = () => {
   return (
     <MainContainer>
       <HeadingsWrapper>
-        <Heading>Enter your personal information:</Heading>
+        <Heading>Enter your personal information</Heading>
       </HeadingsWrapper>
       <PersonalInfoForm />
     </MainContainer>

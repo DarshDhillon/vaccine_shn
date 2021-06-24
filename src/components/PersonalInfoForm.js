@@ -37,7 +37,7 @@ const PersonalInfoForm = () => {
         </StepIconWrapper>
         <InfoForm onSubmit={handleSubmitForm}>
           <InfoDetail>
-            <label>Title:</label>
+            <Label>Title:</Label>
             <Selector>
               {HonorificsData.map((honorific, index) => (
                 <Option key={index}>{honorific}</Option>
@@ -90,7 +90,7 @@ const PersonalInfoForm = () => {
 export default PersonalInfoForm;
 
 const InfoContainer = styled.div`
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -100,8 +100,8 @@ const InfoContainer = styled.div`
 `;
 
 const InfoForm = styled.form`
-  /* border: 1px solid red; */
-  width: 50%;
+  border: 1px solid red;
+  width: 60%;
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
@@ -122,20 +122,25 @@ const Selector = styled.select`
 
 const Option = styled.option`
   border: none;
+  font-size: 1rem;
 `;
 
-const Label = styled.label``;
+const Label = styled.label`
+  font-size: 1.5rem;
+`;
 
 const Input = styled.input`
   outline: none;
   border: 1px solid #005eb8;
   margin-left: auto;
   text-transform: capitalize;
+  font-size: 1.5rem;
 `;
 
 const Email = styled.p`
   margin-left: auto;
   color: grey;
+  font-size: 1.5rem;
 `;
 
 const ButtonWrapper = styled.div`
