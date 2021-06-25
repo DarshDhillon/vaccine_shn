@@ -4,12 +4,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { firebaseDatabase } from '../firebase';
 import { setIsLoading } from '../state/usersSlice';
 import LoadingSpinnerBlue from '../assets/images/loading_spinner_blue.gif';
+import CancelAppointmentModal from './CancelAppointmentModal';
 
 // import { firestore } from '../firebase';
 
 const UserDashboard = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.usersSlice.isLoading);
+
+  const [showCancelAppointmentModal, setShowCancelAppointmentModal] =
+    useState(false);
+
   const currentUserUid = useSelector(
     (state) => state.usersSlice.currentUser.uid
   );
@@ -46,7 +51,7 @@ const UserDashboard = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {isLoading ? (
         <LoadingSpinnerImage src={LoadingSpinnerBlue} alt='loading spinner' />
       ) : (
@@ -79,10 +84,23 @@ const UserDashboard = () => {
                 </SubHeading>
               </SubHeadingSection>
             </AppointmentInfoWrapper>
+            <ButtonWrapper>
+              <Button>CHANGE APPOINTMENT</Button>
+              <Button
+                $secondary
+                onClick={() => setShowCancelAppointmentModal((prev) => !prev)}
+              >
+                CANCEL APPOINTMENT
+              </Button>
+            </ButtonWrapper>
           </ConfirmationWrapper>
         </ConfirmationContainer>
       )}
-    </div>
+      <CancelAppointmentModal
+        showCancelAppointmentModal={showCancelAppointmentModal}
+        setShowCancelAppointmentModal={setShowCancelAppointmentModal}
+      />
+    </>
   );
 };
 
@@ -119,6 +137,7 @@ const Heading = styled.h1`
   font-weight: bold;
   font-size: 3rem;
   margin-bottom: 2rem;
+  text-transform: capitalize;
 `;
 
 const SubHeadingSection = styled.div`
@@ -130,6 +149,7 @@ const SubHeadingSection = styled.div`
 const SubHeading = styled.h2`
   font-weight: ${({ $lighter }) => $lighter && 'lighter'};
   margin-bottom: 1rem;
+
   /* margin-left: auto; */
 `;
 
@@ -149,7 +169,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: ${({ $secondary }) => ($secondary ? '#4c6272' : '#007f3b')};
+  background-color: ${({ $secondary }) => ($secondary ? '#cc2424' : '#007f3b')};
   border: 2px solid transparent;
   border-radius: 4px;
   box-shadow: ${({ $secondary }) =>
@@ -167,6 +187,6 @@ const Button = styled.button`
 
   :hover {
     background-color: ${({ $secondary }) =>
-      $secondary ? '#223846' : '#046933'};
+      $secondary ? '#940e0e' : '#046933'};
   }
 `;

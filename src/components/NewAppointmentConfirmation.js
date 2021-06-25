@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { resetAllAppointmentDetails } from '../state/usersSlice';
 import { firebaseDatabase } from '../firebase';
-import { nanoid } from 'nanoid';
 
 const NewAppointmentConfirmation = () => {
   const dispatch = useDispatch();
@@ -62,7 +61,7 @@ const NewAppointmentConfirmation = () => {
           </SubHeadingSection>
           <SubHeadingSection>
             <Label>Location:</Label>
-            <SubHeading>
+            <SubHeading $small>
               {locationName} {locationAddress}
             </SubHeading>
           </SubHeadingSection>
@@ -119,6 +118,8 @@ const SubHeadingSection = styled.div`
 const SubHeading = styled.h2`
   font-weight: ${({ $lighter }) => $lighter && 'lighter'};
   margin-bottom: 1rem;
+  font-size: ${({ $small }) => ($small ? '1.3rem' : '1.5rem')};
+  text-transform: capitalize;
   /* margin-left: auto; */
 `;
 

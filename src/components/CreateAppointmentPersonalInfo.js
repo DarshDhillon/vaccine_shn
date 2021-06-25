@@ -1,12 +1,7 @@
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import PersonalInfoForm from './PersonalInfoForm';
 
 const CreateAppointmentPersonalInfo = () => {
-  // const currentUserUid = useSelector(
-  //   (state) => state.usersSlice.currentUser.uid
-  // );
-
   return (
     <MainContainer>
       <HeadingsWrapper>
@@ -39,14 +34,4 @@ const Heading = styled.h1`
   font-weight: bold;
   font-size: 3rem;
   margin-bottom: 2rem;
-`;
-
-const SubHeadingSection = styled.div`
-  padding: 0 1rem;
-  /* margin-bottom: 2rem; */
-`;
-
-const SubHeading = styled.h2`
-  font-weight: ${({ $lighter }) => $lighter && 'lighter'};
-  margin-bottom: 0.5rem;
 `;

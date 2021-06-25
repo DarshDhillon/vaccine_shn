@@ -6,7 +6,7 @@ import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedAppointmentDateAndTime } from '../state/usersSlice';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
@@ -17,7 +17,15 @@ const DateAndTimePicker = () => {
   const [day, setDay] = useState(new Date());
   const [time, setTime] = useState(new Date());
 
+  const chosenAppointmentLocationName = useSelector(
+    (state) => state.usersSlice.selectedAppointmentDetails.locationName
+  );
+
   const handleSaveDateAndTime = () => {
+    if (!chosenAppointmentLocationName) {
+      return alert('You must choose a locaton first');
+    }
+
     dispatch(
       setSelectedAppointmentDateAndTime({
         appointmentDate: moment(day).format('DD/MM/YYYY'),
