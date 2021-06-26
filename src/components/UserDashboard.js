@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { firebaseDatabase } from '../firebase';
 import { setIsLoading } from '../state/usersSlice';
+import { setRetrievedAppointmentDetails } from '../state/usersSlice';
 import LoadingSpinnerBlue from '../assets/images/loading_spinner_blue.gif';
 import CancelAppointmentModal from './CancelAppointmentModal';
+import { Link } from 'react-router-dom';
 
 // import { firestore } from '../firebase';
 
@@ -19,10 +21,13 @@ const UserDashboard = () => {
     (state) => state.usersSlice.currentUser.uid
   );
 
-  const [userAppointmentData, setUserAppointmentData] = useState({
-    appointmentDetails: {},
-    personalDetails: {},
-  });
+  const selectedAppointmentDetails = useSelector(
+    (state) => state.usersSlice.selectedAppointmentDetails
+  );
+
+  const newUserPersonalInfo = useSelector(
+    (state) => state.usersSlice.newUserPersonalInfo
+  );
 
   const getUserAppointmentDetails = () => {
     dispatch(setIsLoading(true));
@@ -31,10 +36,12 @@ const UserDashboard = () => {
       .get()
       .then((doc) => {
         if (doc.exists) {
-          setUserAppointmentData({
-            appointmentDetails: { ...doc.data().appointmentDetails },
-            personalDetails: { ...doc.data().personalDetails },
-          });
+          dispatch(
+            setRetrievedAppointmentDetails({
+              appointmentDetails: { ...doc.data().appointmentDetails },
+              personalDetails: { ...doc.data().personalDetails },
+            })
+          );
         } else {
           console.error('No such document!');
         }
@@ -57,9 +64,7 @@ const UserDashboard = () => {
       ) : (
         <ConfirmationContainer>
           <ConfirmationWrapper>
-            <Heading>
-              Hi, {userAppointmentData.personalDetails.firstName}
-            </Heading>
+            <Heading>Hi, {newUserPersonalInfo.firstName}</Heading>
             <SubHeading $lighter>
               Your coronavirus (COVID-19) vaccination appointment:
             </SubHeading>
@@ -67,25 +72,27 @@ const UserDashboard = () => {
               <SubHeadingSection>
                 <Label>Location:</Label>
                 <SubHeading>
-                  {userAppointmentData.appointmentDetails.locationName}
+                  {selectedAppointmentDetails.locationName}
                 </SubHeading>
               </SubHeadingSection>
               <SubHeadingSection>
                 <Label>Scheduled:</Label>
                 <SubHeading>
-                  {userAppointmentData.appointmentDetails.appointmentDate} at{' '}
-                  {userAppointmentData.appointmentDetails.appointmentTime}
+                  {selectedAppointmentDetails.appointmentDate} at{' '}
+                  {selectedAppointmentDetails.appointmentTime}
                 </SubHeading>
               </SubHeadingSection>
               <SubHeadingSection>
                 <Label>Appointment reference:</Label>
                 <SubHeading>
-                  {userAppointmentData.appointmentDetails.appointmentReference}
+                  {selectedAppointmentDetails.appointmentReference}
                 </SubHeading>
               </SubHeadingSection>
             </AppointmentInfoWrapper>
             <ButtonWrapper>
-              <Button>CHANGE APPOINTMENT</Button>
+              <Link to='/create-appointment/choose-location'>
+                <Button>CHANGE APPOINTMENT</Button>
+              </Link>
               <Button
                 $secondary
                 onClick={() => setShowCancelAppointmentModal((prev) => !prev)}
@@ -190,3 +197,13 @@ const Button = styled.button`
       $secondary ? '#940e0e' : '#046933'};
   }
 `;
+
+// setUserAppointmentData({
+//   appointmentDetails: { ...doc.data().appointmentDetails },
+//   personalDetails: { ...doc.data().personalDetails },
+// });
+
+// const [userAppointmentData, setUserAppointmentData] = useState({
+//   appointmentDetails: {},
+//   personalDetails: {},
+// });

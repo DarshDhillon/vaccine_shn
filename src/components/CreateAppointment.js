@@ -9,7 +9,7 @@ const CreateAppointment = () => {
         <SubHeadingSection>
           <SubHeading $lighter>1. Enter your personal information</SubHeading>
           <SubHeading $lighter>
-            2. Using the map, select your hospital or practice of choice
+            2. Using the map, select the hospital or practice of your choice
           </SubHeading>
           <SubHeading $lighter>
             3. Choose a preferred appointment date and time

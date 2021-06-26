@@ -20,6 +20,8 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (signUpPassword !== signUpConfirmPassword) return;
+
     dispatch(setIsLoadingUser(true));
 
     try {

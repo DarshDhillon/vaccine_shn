@@ -16,8 +16,13 @@ const NewAppointmentConfirmation = () => {
     (state) => state.usersSlice.newUserPersonalInfo
   );
 
-  const { locationName, locationAddress, appointmentDate, appointmentTime } =
-    useSelector((state) => state.usersSlice.selectedAppointmentDetails);
+  const {
+    locationName,
+    locationAddress,
+    locationPhoneNumber,
+    appointmentDate,
+    appointmentTime,
+  } = useSelector((state) => state.usersSlice.selectedAppointmentDetails);
 
   const handleStartAgain = () => {
     dispatch(resetAllAppointmentDetails());
@@ -36,6 +41,7 @@ const NewAppointmentConfirmation = () => {
         locationAddress,
         appointmentDate,
         appointmentTime,
+        locationPhoneNumber,
         appointmentReference: currentUserUid.substr(0, 7).toUpperCase(),
       },
     });
@@ -73,9 +79,9 @@ const NewAppointmentConfirmation = () => {
           </SubHeadingSection>
         </AppointmentInfoWrapper>
         <ButtonWrapper>
-          <Button onClick={handleSaveAppointment}>YES, BOOK APPOINTMENT</Button>
+          <Button onClick={handleSaveAppointment}>BOOK APPOINTMENT</Button>
           <Button onClick={handleStartAgain} $secondary>
-            NO, START AGAIN
+            START AGAIN
           </Button>
         </ButtonWrapper>
       </ConfirmationWrapper>

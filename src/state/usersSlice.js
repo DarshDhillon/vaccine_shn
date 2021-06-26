@@ -12,6 +12,7 @@ const usersSlice = createSlice({
       locationPhoneNumber: '',
       appointmentDate: '',
       appointmentTime: '',
+      appointmentReference: '',
     },
     newUserPersonalInfo: {
       firstName: '',
@@ -67,6 +68,10 @@ const usersSlice = createSlice({
         },
       };
     },
+    setRetrievedAppointmentDetails: (state, { payload }) => {
+      state.selectedAppointmentDetails = payload.appointmentDetails;
+      state.newUserPersonalInfo = payload.personalDetails;
+    },
   },
 });
 
@@ -78,28 +83,17 @@ export const {
   setSelectedAppointmentDateAndTime,
   setNewUserPersonalInfo,
   resetAllAppointmentDetails,
+  setRetrievedAppointmentDetails,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;
 
-// setSelectedAppointmentDetails: (state, { payload }) => {
-//   state.selectedAppointmentDetails.locationName = payload.locationName;
-//   state.selectedAppointmentDetails.locationAddress =
-//     payload.locationAddress;
-//   state.selectedAppointmentDetails.locationPhoneNumber =
-//     payload.locationPhoneNumber;
-//   state.selectedAppointmentDetails.appointmentDate =
-//     payload.appointmentDate;
-//   state.selectedAppointmentDetails.appointmentTime =
-//     payload.appointmentTime;
-// },
-
-// setSelectedAppointmentDetails: (state, { payload }) => {
-//   return {
-//     locationName: payload.locationName,
-//     locationAddress: payload.locationAddress,
-//     locationPhoneNumber: payload.locationPhoneNumber,
-//     appointmentDate: payload.appointmentDate,
-//     appointmentTime: payload.appointmentTime,
-//   };
-// },
+// state.selectedAppointmentDetails.locationName =
+// payload.appointmentDetails.locationName;
+// state.selectedAppointmentDetails.appointmentDate =
+// payload.appointmentDetails.appointmentDate;
+// state.selectedAppointmentDetails.appointmentTime =
+// payload.appointmentDetails.appointmentTime;
+// state.selectedAppointmentDetails.appointmentReference =
+// payload.appointmentDetails.appointmentReference;
+// state.newUserPersonalInfo.firstName = payload.personalDetails.firstName;
