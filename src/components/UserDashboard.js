@@ -135,6 +135,14 @@ const ConfirmationWrapper = styled.div`
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;
+
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const AppointmentInfoWrapper = styled.div``;
@@ -145,6 +153,10 @@ const Heading = styled.h1`
   font-size: 3rem;
   margin-bottom: 2rem;
   text-transform: capitalize;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
 `;
 
 const SubHeadingSection = styled.div`
@@ -157,6 +169,10 @@ const SubHeading = styled.h2`
   font-weight: ${({ $lighter }) => $lighter && 'lighter'};
   margin-bottom: 1rem;
 
+  @media screen and (max-width: 600px) {
+    font-size: 1rem;
+  }
+
   /* margin-left: auto; */
 `;
 
@@ -164,15 +180,18 @@ const Label = styled.label`
   /* font-weight: bold; */
   font-size: 1.5rem;
   margin-right: 1rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ButtonWrapper = styled.div`
   /* border: 1px solid red; */
   display: flex;
-  width: 70%;
   padding: 1rem;
-  justify-content: space-around;
   /* margin: 0 auto; */
+  flex-wrap: wrap;
 `;
 
 const Button = styled.button`
@@ -191,10 +210,15 @@ const Button = styled.button`
   vertical-align: top;
   width: auto;
   text-decoration: none;
+  margin: 0.5rem;
 
   :hover {
     background-color: ${({ $secondary }) =>
       $secondary ? '#940e0e' : '#046933'};
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;
 

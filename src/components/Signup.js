@@ -103,27 +103,41 @@ const SignUp = () => {
 export default SignUp;
 
 const SignUpContainer = styled.div`
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 50%;
   margin: 0 auto;
   padding: 1rem;
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const SignUpWrapper = styled.div`
-  /* border: 3px solid lightgray; */
+  border: 1px solid black;
   min-height: 400px;
   width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  @media screen and (max-width: 1200px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const SignUpForm = styled.form`
-  /* border: 1px solid red; */
-  width: 50%;
+  border: 1px solid red;
+  /* width: 50%; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;

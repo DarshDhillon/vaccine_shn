@@ -14,6 +14,8 @@ const MapSection = () => {
       lat: 51.509865,
       lng: -0.118092,
     },
+    disableDefaultUI: true,
+    zoomControl: true,
     zoom: 11,
     // mapTypeId: 'roadmap',
     gestureHandling: 'greedy',
@@ -56,7 +58,7 @@ const MapSection = () => {
 
       const input = document.getElementById('location-input');
       const searchBox = new google.maps.places.SearchBox(input);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
       // Bias the SearchBox results towards current map's viewport.
       map.addListener('bounds_changed', () => {
         searchBox.setBounds(map.getBounds());
@@ -161,6 +163,11 @@ export default MapSection;
 
 const MapSectionContainer = styled.div`
   display: flex;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const MapContainer = styled.div``;
@@ -168,6 +175,16 @@ const MapContainer = styled.div``;
 const MapWrapper = styled.div`
   height: 600px;
   width: 600px;
+
+  @media screen and (max-width: 768px) {
+    height: 450px;
+    width: 450px;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 300px;
+    width: 300px;
+  }
 `;
 
 const LocationInput = styled.input`
@@ -177,5 +194,9 @@ const LocationInput = styled.input`
   ::placeholder {
     font-weight: bold;
     color: #005eb8;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;

@@ -97,14 +97,26 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
+
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const InfoForm = styled.form`
-  border: 1px solid red;
-  width: 60%;
+  border: 1px solid black;
+  width: 80%;
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
+
+  @media screen and (max-width: 1350px) {
+    width: 100%;
+  }
 `;
 
 const InfoDetail = styled.div`
@@ -127,6 +139,9 @@ const Option = styled.option`
 
 const Label = styled.label`
   font-size: 1.5rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const Input = styled.input`
@@ -135,6 +150,10 @@ const Input = styled.input`
   margin-left: auto;
   text-transform: capitalize;
   font-size: 1.5rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.6rem;
+  }
 `;
 
 const Email = styled.p`
@@ -165,9 +184,14 @@ const SaveButton = styled.button`
   vertical-align: top;
   width: auto;
   text-decoration: none;
+  margin: 0.5rem;
 
   :hover {
     background-color: #046933;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;
 

@@ -30,6 +30,14 @@ const HeadingsWrapper = styled.div`
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;
+
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const Heading = styled.h1`
@@ -37,6 +45,10 @@ const Heading = styled.h1`
   font-weight: bold;
   font-size: 3rem;
   margin-bottom: 2rem;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
 `;
 
 const MapContainer = styled.div`
@@ -44,4 +56,8 @@ const MapContainer = styled.div`
   padding: 2rem 1rem;
   width: 70%;
   margin: 0 auto;
+
+  @media screen and (max-width: 1400px) {
+    width: 90%;
+  }
 `;

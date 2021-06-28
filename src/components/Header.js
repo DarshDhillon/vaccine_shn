@@ -51,6 +51,14 @@ const HeaderImageWrapper = styled.div`
   width: 50%;
   margin: 0 auto;
   position: relative;
+
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const HeaderLogo = styled.img`
@@ -75,5 +83,9 @@ const LogoutButton = styled.button`
 
   :hover {
     background-color: #d3cfcf;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;

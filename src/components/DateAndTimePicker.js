@@ -48,7 +48,7 @@ const DateAndTimePicker = () => {
             </SubHeading>
             <DatePicker
               style={{
-                width: '20%',
+                width: '40%',
                 marginBottom: '2rem',
                 fontWeight: 'bolder',
               }}
@@ -62,7 +62,7 @@ const DateAndTimePicker = () => {
               2. Choose the time of your appointment
             </SubHeading>
             <TimePicker
-              style={{ width: '20%', marginBottom: '2rem' }}
+              style={{ width: '40%', marginBottom: '2rem' }}
               value={time}
               onChange={(newTime) => setTime(newTime)}
             />
@@ -88,6 +88,10 @@ const DateAndTimeWrapper = styled.div`
   border: 1px solid blue;
   width: 70%;
   margin: 0 auto;
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const StepIconWrapper = styled.div`
@@ -146,5 +150,9 @@ const SaveButton = styled.button`
 
   :hover {
     background-color: #046933;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;

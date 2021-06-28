@@ -55,12 +55,12 @@ const CancelAppointmentModal = ({
           </SubHeading>
           <ButtonWrapper>
             <Button $secondary onClick={handleDeleteAppointment}>
-              CANCEL APPOINTMENT
+              YES, CANCEL
             </Button>
             <Button
               onClick={() => setShowCancelAppointmentModal((prev) => !prev)}
             >
-              GO BACK
+              NO, GO BACK
             </Button>
           </ButtonWrapper>
         </ConfirmationBox>
@@ -111,21 +111,29 @@ const Heading = styled.h1`
   font-weight: bold;
   font-size: 3rem;
   margin-bottom: 2rem;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
 `;
 
 const SubHeading = styled.h2`
   font-weight: ${({ $lighter }) => $lighter && 'lighter'};
   margin-bottom: 1rem;
   color: #000;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ButtonWrapper = styled.div`
   /* border: 1px solid red; */
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   padding: 1rem;
-  justify-content: space-around;
   /* margin: 0 auto; */
+  flex-wrap: wrap;
 `;
 
 const Button = styled.button`
@@ -144,9 +152,14 @@ const Button = styled.button`
   vertical-align: top;
   width: auto;
   text-decoration: none;
+  margin: 0.5rem;
 
   :hover {
     background-color: ${({ $secondary }) =>
       $secondary ? '#940e0e' : '#223846'};
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;
