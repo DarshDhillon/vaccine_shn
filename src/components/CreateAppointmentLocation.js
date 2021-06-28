@@ -19,7 +19,7 @@ const CreateAppointmentLocation = () => {
 export default CreateAppointmentLocation;
 
 const MainContainer = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@ const Heading = styled.h1`
 `;
 
 const MapContainer = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 2rem 1rem;
   width: 70%;
   margin: 0 auto;

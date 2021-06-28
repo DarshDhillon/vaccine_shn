@@ -90,7 +90,7 @@ const PersonalInfoForm = () => {
 export default PersonalInfoForm;
 
 const InfoContainer = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -108,7 +108,7 @@ const InfoContainer = styled.div`
 `;
 
 const InfoForm = styled.form`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 80%;
   display: flex;
   flex-direction: column;

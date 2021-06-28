@@ -38,7 +38,7 @@ const MainContainer = styled.div`
 `;
 
 const MainWrapper = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   /* background-color: pink; */
@@ -74,7 +74,7 @@ const SubHeading = styled.h2`
 `;
 
 const ButtonWrapper = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   /* width: 70%; */
   padding: 1rem;

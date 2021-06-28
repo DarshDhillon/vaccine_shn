@@ -22,6 +22,7 @@ const NewAppointmentConfirmation = () => {
     locationPhoneNumber,
     appointmentDate,
     appointmentTime,
+    appointmentReference,
   } = useSelector((state) => state.usersSlice.selectedAppointmentDetails);
 
   const handleStartAgain = () => {
@@ -79,7 +80,9 @@ const NewAppointmentConfirmation = () => {
           </SubHeadingSection>
         </AppointmentInfoWrapper>
         <ButtonWrapper>
-          <Button onClick={handleSaveAppointment}>BOOK APPOINTMENT</Button>
+          <Button onClick={handleSaveAppointment}>
+            {appointmentReference ? 'AMEND APPOINTMENT' : 'BOOK APPOINTMENT'}
+          </Button>
           <Button onClick={handleStartAgain} $secondary>
             START AGAIN
           </Button>
@@ -92,7 +95,7 @@ const NewAppointmentConfirmation = () => {
 export default NewAppointmentConfirmation;
 
 const ConfirmationContainer = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -100,7 +103,7 @@ const ConfirmationContainer = styled.div`
 `;
 
 const ConfirmationWrapper = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;

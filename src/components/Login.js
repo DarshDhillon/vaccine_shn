@@ -77,7 +77,7 @@ const Login = () => {
 export default Login;
 
 const LoginContainer = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 1rem;
@@ -93,7 +93,7 @@ const LoginContainer = styled.div`
 `;
 
 const LoginWrapper = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-height: 400px;
   width: 60%;
   display: flex;
@@ -110,7 +110,7 @@ const LoginWrapper = styled.div`
 `;
 
 const LoginForm = styled.form`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* width: 50%; */
   display: flex;
   flex-direction: column;

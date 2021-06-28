@@ -54,13 +54,13 @@ const SelectedMapDetails = ({ handleGetLocation }) => {
 export default SelectedMapDetails;
 
 const DetailsContainer = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 100%;
   /* padding: 0rem 1rem; */
 `;
 
 const DetailsWrapper = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* width: 80%; */
   padding: 0rem 1rem;
   margin: 0 auto;

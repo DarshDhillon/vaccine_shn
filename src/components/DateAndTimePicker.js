@@ -79,13 +79,13 @@ const DateAndTimePicker = () => {
 export default DateAndTimePicker;
 
 const DateAndTimeContainer = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 100%;
   padding: 2rem 1rem;
 `;
 
 const DateAndTimeWrapper = styled.div`
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: 70%;
   margin: 0 auto;
 
