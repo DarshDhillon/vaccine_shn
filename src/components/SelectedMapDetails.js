@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const SelectedMapDetails = ({ handleGetLocation }) => {
   const selectedAppointmentDetails = useSelector(
@@ -49,6 +50,10 @@ const SelectedMapDetails = ({ handleGetLocation }) => {
       </DetailsWrapper>
     </DetailsContainer>
   );
+};
+
+SelectedMapDetails.propTypes = {
+  handleGetLocation: PropTypes.func,
 };
 
 export default SelectedMapDetails;
