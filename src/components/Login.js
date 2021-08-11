@@ -153,7 +153,10 @@ const Redirect = styled.p`
   font-style: italic;
 `;
 
-const ErrorContainer = styled.div``;
+const ErrorContainer = styled.div`
+  /* border: 1px solid red; */
+  height: 1.5rem;
+`;
 
 const ErrorMessage = styled.p`
   color: red;
@@ -168,7 +171,6 @@ const ShowPasswordIcon = styled(BsEye)`
 
 const HidePasswordIcon = styled(BsEyeSlash)`
   cursor: pointer;
-
   font-size: 1.5rem;
   color: #005eb8;
 `;

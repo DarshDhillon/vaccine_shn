@@ -177,6 +177,9 @@ const SubmitButton = styled.button`
 `;
 
 const ErrorContainer = styled.div`
+  /* border: 1px solid green; */
+  margin-top: 1rem;
+  height: 3rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -188,6 +191,7 @@ const ErrorMessage = styled.p`
 `;
 
 const Redirect = styled.p`
+  /* border: 1px solid red; */
   font-style: italic;
 `;
 

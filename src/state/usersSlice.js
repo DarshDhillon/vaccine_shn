@@ -87,13 +87,3 @@ export const {
 } = usersSlice.actions;
 
 export default usersSlice.reducer;
-
-// state.selectedAppointmentDetails.locationName =
-// payload.appointmentDetails.locationName;
-// state.selectedAppointmentDetails.appointmentDate =
-// payload.appointmentDetails.appointmentDate;
-// state.selectedAppointmentDetails.appointmentTime =
-// payload.appointmentDetails.appointmentTime;
-// state.selectedAppointmentDetails.appointmentReference =
-// payload.appointmentDetails.appointmentReference;
-// state.newUserPersonalInfo.firstName = payload.personalDetails.firstName;
