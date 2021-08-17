@@ -52,7 +52,6 @@ const DateAndTimePicker = () => {
                 marginBottom: '2rem',
                 fontWeight: 'bolder',
               }}
-              //   openTo='month'
               format='dd/MM/yyyy'
               disablePast={true}
               onChange={(newValue) => setDay(newValue)}
@@ -79,13 +78,11 @@ const DateAndTimePicker = () => {
 export default DateAndTimePicker;
 
 const DateAndTimeContainer = styled.div`
-  /* border: 1px solid red; */
   width: 100%;
   padding: 2rem 1rem;
 `;
 
 const DateAndTimeWrapper = styled.div`
-  /* border: 1px solid blue; */
   width: 70%;
   margin: 0 auto;
 
@@ -96,7 +93,6 @@ const DateAndTimeWrapper = styled.div`
 
 const StepIconWrapper = styled.div`
   display: flex;
-  /* justify-content: flex-end; */
   align-items: center;
   text-align: center;
   margin-bottom: 2rem;
@@ -124,9 +120,7 @@ const SubHeading = styled.h2`
 `;
 
 const ButtonWrapper = styled.div`
-  /* border: 1px solid red; */
   width: 40%;
-  /* justify-content: flex-end; */
   display: flex;
   align-items: center;
   margin-top: 1rem;

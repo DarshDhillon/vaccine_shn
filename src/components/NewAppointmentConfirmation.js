@@ -95,15 +95,12 @@ const NewAppointmentConfirmation = () => {
 export default NewAppointmentConfirmation;
 
 const ConfirmationContainer = styled.div`
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* background-color: #f0f4f5; */
 `;
 
 const ConfirmationWrapper = styled.div`
-  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -133,7 +130,6 @@ const Heading = styled.h1`
 const SubHeadingSection = styled.div`
   display: flex;
   padding: 0 1rem;
-  /* margin-bottom: 2rem; */
 `;
 
 const SubHeading = styled.h2`
@@ -141,7 +137,6 @@ const SubHeading = styled.h2`
   margin-bottom: 1rem;
   font-size: ${({ $small }) => ($small ? '1.3rem' : '1.5rem')};
   text-transform: capitalize;
-  /* margin-left: auto; */
 
   @media screen and (max-width: 768px) {
     font-size: 1rem;
@@ -149,7 +144,6 @@ const SubHeading = styled.h2`
 `;
 
 const Label = styled.label`
-  /* font-weight: bold; */
   font-size: 1.5rem;
   margin-right: 1rem;
 
@@ -159,12 +153,9 @@ const Label = styled.label`
 `;
 
 const ButtonWrapper = styled.div`
-  /* border: 1px solid red; */
   display: flex;
   padding: 1rem;
   flex-wrap: wrap;
-
-  /* margin: 0 auto; */
 `;
 
 const Button = styled.button`

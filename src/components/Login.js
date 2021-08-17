@@ -77,7 +77,6 @@ const Login = () => {
 export default Login;
 
 const LoginContainer = styled.div`
-  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 1rem;
@@ -93,7 +92,6 @@ const LoginContainer = styled.div`
 `;
 
 const LoginWrapper = styled.div`
-  /* border: 1px solid black; */
   min-height: 400px;
   width: 60%;
   display: flex;
@@ -110,8 +108,6 @@ const LoginWrapper = styled.div`
 `;
 
 const LoginForm = styled.form`
-  /* border: 1px solid red; */
-  /* width: 50%; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -119,7 +115,6 @@ const LoginForm = styled.form`
 `;
 
 const Label = styled.label`
-  /* font-weight: bold; */
   margin-bottom: 0.5rem;
 `;
 
@@ -131,7 +126,6 @@ const Input = styled.input`
 `;
 
 const Heading = styled.h1`
-  /* color: #005eb8; */
   text-align: center;
   margin-bottom: 1rem;
 `;
@@ -154,7 +148,6 @@ const Redirect = styled.p`
 `;
 
 const ErrorContainer = styled.div`
-  /* border: 1px solid red; */
   height: 1.5rem;
 `;
 

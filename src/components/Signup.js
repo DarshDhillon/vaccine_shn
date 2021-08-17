@@ -103,7 +103,6 @@ const SignUp = () => {
 export default SignUp;
 
 const SignUpContainer = styled.div`
-  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 1rem;
@@ -119,7 +118,6 @@ const SignUpContainer = styled.div`
 `;
 
 const SignUpWrapper = styled.div`
-  /* border: 1px solid black; */
   min-height: 400px;
   width: 60%;
   display: flex;
@@ -136,8 +134,6 @@ const SignUpWrapper = styled.div`
 `;
 
 const SignUpForm = styled.form`
-  /* border: 1px solid red; */
-  /* width: 50%; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -145,7 +141,6 @@ const SignUpForm = styled.form`
 `;
 
 const Label = styled.label`
-  /* font-weight: bold; */
   margin-bottom: 0.5rem;
 `;
 
@@ -157,7 +152,6 @@ const Input = styled.input`
 `;
 
 const Heading = styled.h1`
-  /* color: #005eb8; */
   text-align: center;
   margin-bottom: 1rem;
 `;
@@ -177,7 +171,6 @@ const SubmitButton = styled.button`
 `;
 
 const ErrorContainer = styled.div`
-  /* border: 1px solid green; */
   margin-top: 1rem;
   height: 3rem;
   text-align: center;
@@ -191,7 +184,6 @@ const ErrorMessage = styled.p`
 `;
 
 const Redirect = styled.p`
-  /* border: 1px solid red; */
   font-style: italic;
 `;
 

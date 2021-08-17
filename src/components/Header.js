@@ -37,7 +37,6 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.header`
-  /* padding: 1rem; */
   height: 200px;
   width: 100%;
   background-color: #005eb8;
@@ -47,7 +46,6 @@ const HeaderContainer = styled.header`
 `;
 
 const HeaderImageWrapper = styled.div`
-  /* border: 1px solid black; */
   width: 50%;
   margin: 0 auto;
   position: relative;
@@ -62,7 +60,6 @@ const HeaderImageWrapper = styled.div`
 `;
 
 const HeaderLogo = styled.img`
-  /* border: 1px solid white; */
   width: 180px;
 `;
 

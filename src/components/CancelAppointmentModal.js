@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { firebaseDatabase, firebaseAuth } from '../firebase';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetAllAppointmentDetails } from '../state/usersSlice';
+import PropTypes from 'prop-types';
 
 const APPOINTMENT_ROOT = document.getElementById(
   'cancel-appointment-modal-root'
@@ -70,6 +71,11 @@ const CancelAppointmentModal = ({
   );
 };
 
+CancelAppointmentModal.propTypes = {
+  showCancelAppointmentModal: PropTypes.bool,
+  setShowCancelAppointmentModal: PropTypes.func,
+};
+
 export default CancelAppointmentModal;
 
 const ModalContainer = styled.div`
@@ -80,14 +86,6 @@ const ModalContainer = styled.div`
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
-  /* display: flex;
-  justify-content: center;
-  align-items: flex-end; */
-
-  /* @media (orientation: landscape) {
-    flex-direction: column;
-    align-items: flex-start;
-  } */
 `;
 
 const ConfirmationWrapper = styled.div`
@@ -128,11 +126,8 @@ const SubHeading = styled.h2`
 `;
 
 const ButtonWrapper = styled.div`
-  /* border: 1px solid red; */
   display: flex;
-  /* width: 100%; */
   padding: 1rem;
-  /* margin: 0 auto; */
   flex-wrap: wrap;
 `;
 

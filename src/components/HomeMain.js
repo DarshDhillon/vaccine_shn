@@ -17,7 +17,6 @@ const HomeMain = () => {
           local SHN service, you do not need to book again using this service.
         </SubHeading>
         <ButtonWrapper>
-          {/* <Button to='/sign-up'>Book my appointment</Button> */}
           <Button to='/sign-up'>CREATE MY APPOINTMENT</Button>
           <Button to='/login' $secondary>
             MANAGE MY APPOINTMENT
@@ -31,17 +30,13 @@ const HomeMain = () => {
 export default HomeMain;
 
 const MainContainer = styled.div`
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
-  /* background-color: #f0f4f5; */
 `;
 
 const MainWrapper = styled.div`
-  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
-  /* background-color: pink; */
   padding: 2rem 1rem;
 
   @media screen and (max-width: 1200px) {
@@ -74,13 +69,9 @@ const SubHeading = styled.h2`
 `;
 
 const ButtonWrapper = styled.div`
-  /* border: 1px solid red; */
   display: flex;
-  /* width: 70%; */
   padding: 1rem;
-  /* justify-content: space-around; */
   flex-wrap: wrap;
-  /* margin: 0 auto; */
 `;
 
 const Button = styled(Link)`
@@ -91,7 +82,6 @@ const Button = styled(Link)`
     $secondary ? '0 4px 0 #263139' : ' 0 4px 0 #00401e'};
   color: #fff;
   cursor: pointer;
-  /* font-size: 1.1rem; */
   font-weight: 600;
   margin-top: 0;
   padding: 1rem 1.5rem;

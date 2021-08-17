@@ -29,15 +29,12 @@ const CreateAppointment = () => {
 export default CreateAppointment;
 
 const MainContainer = styled.div`
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* background-color: #f0f4f5; */
 `;
 
 const HeadingsWrapper = styled.div`
-  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -77,14 +74,9 @@ const SubHeading = styled.h2`
 `;
 
 const ButtonWrapper = styled.div`
-  /* border: 1px solid red; */
   display: flex;
-  /* width: 50%; */
   padding: 1rem;
   margin: 0 auto;
-
-  /* justify-content: space-around; */
-  /* margin: 0 auto; */
 `;
 
 const Button = styled(Link)`

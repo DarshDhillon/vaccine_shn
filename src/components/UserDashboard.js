@@ -8,8 +8,6 @@ import LoadingSpinnerBlue from '../assets/images/loading_spinner_blue.gif';
 import CancelAppointmentModal from './CancelAppointmentModal';
 import { Link } from 'react-router-dom';
 
-// import { firestore } from '../firebase';
-
 const UserDashboard = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.usersSlice.isLoading);
@@ -123,15 +121,12 @@ const LoadingSpinnerImage = styled.img`
 `;
 
 const ConfirmationContainer = styled.div`
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* background-color: #f0f4f5; */
 `;
 
 const ConfirmationWrapper = styled.div`
-  /* border: 1px solid red; */
   width: 50%;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -162,7 +157,6 @@ const Heading = styled.h1`
 const SubHeadingSection = styled.div`
   display: flex;
   padding: 0 1rem;
-  /* margin-bottom: 2rem; */
 `;
 
 const SubHeading = styled.h2`
@@ -172,12 +166,9 @@ const SubHeading = styled.h2`
   @media screen and (max-width: 600px) {
     font-size: 1rem;
   }
-
-  /* margin-left: auto; */
 `;
 
 const Label = styled.label`
-  /* font-weight: bold; */
   font-size: 1.5rem;
   margin-right: 1rem;
 
@@ -187,10 +178,8 @@ const Label = styled.label`
 `;
 
 const ButtonWrapper = styled.div`
-  /* border: 1px solid red; */
   display: flex;
   padding: 1rem;
-  /* margin: 0 auto; */
   flex-wrap: wrap;
 `;
 
@@ -221,13 +210,3 @@ const Button = styled.button`
     font-size: 0.8rem;
   }
 `;
-
-// setUserAppointmentData({
-//   appointmentDetails: { ...doc.data().appointmentDetails },
-//   personalDetails: { ...doc.data().personalDetails },
-// });
-
-// const [userAppointmentData, setUserAppointmentData] = useState({
-//   appointmentDetails: {},
-//   personalDetails: {},
-// });

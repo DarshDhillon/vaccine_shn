@@ -17,7 +17,6 @@ const MapSection = () => {
     disableDefaultUI: true,
     zoomControl: true,
     zoom: 11,
-    // mapTypeId: 'roadmap',
     gestureHandling: 'greedy',
   };
 
@@ -38,7 +37,6 @@ const MapSection = () => {
 
       map.addListener('click', (event) => {
         if (event.placeId) {
-          //   event.stop();
           placesService.getDetails(
             { placeId: event.placeId },
             (place, status) => {
@@ -119,8 +117,6 @@ const MapSection = () => {
             lng: position.coords.longitude,
           };
           infoWindow.setPosition(pos);
-          //   infoWindow.setContent('Your location');
-          //   infoWindow.open(map);
           map.setCenter(pos);
         },
         () => {

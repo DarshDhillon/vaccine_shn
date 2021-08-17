@@ -59,14 +59,10 @@ SelectedMapDetails.propTypes = {
 export default SelectedMapDetails;
 
 const DetailsContainer = styled.div`
-  /* border: 1px solid red; */
   width: 100%;
-  /* padding: 0rem 1rem; */
 `;
 
 const DetailsWrapper = styled.div`
-  /* border: 1px solid red; */
-  /* width: 80%; */
   padding: 0rem 1rem;
   margin: 0 auto;
   display: flex;
@@ -99,7 +95,6 @@ const GoToMyLocationButton = styled.button`
 
 const StepIconWrapper = styled.div`
   display: flex;
-  /* justify-content: flex-end; */
   align-items: center;
   text-align: center;
   margin-bottom: 2rem;
@@ -120,7 +115,6 @@ const SubHeading = styled.h3`
 `;
 
 const SelectedLocationDetails = styled.div`
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
 `;
