@@ -181,6 +181,10 @@ const ErrorContainer = styled.div`
 const ErrorMessage = styled.p`
   color: red;
   font-weight: bold;
+
+  @media screen and (max-width: 500px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const Redirect = styled.p`
