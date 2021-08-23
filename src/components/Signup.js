@@ -6,6 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { firebaseAuth } from '../firebase';
 import { BsEye } from 'react-icons/bs';
 import { BsEyeSlash } from 'react-icons/bs';
+import TestMessageModal from './TestMessageModal';
 
 const SignUp = () => {
   const [signUpEmail, setSignUpEmail] = useState('');
@@ -42,61 +43,70 @@ const SignUp = () => {
   };
 
   return (
-    <SignUpContainer>
-      <SignUpWrapper>
-        <SignUpForm onSubmit={handleSubmit}>
-          <Heading>Sign up</Heading>
-          <Label>Email:</Label>
-          <Input
-            autoFocus
-            autoComplete='none'
-            required
-            value={signUpEmail}
-            onChange={(e) => setSignUpEmail(e.target.value)}
-            type='email'
-          />
-          <Label>Password:</Label>
-          <Input
-            autoComplete='none'
-            required
-            onChange={(e) => setSignUpPassword(e.target.value)}
-            value={signUpPassword}
-            type={showPassword ? 'text' : 'password'}
-          />
-          <Label>Confirm password:</Label>
-          <Input
-            autoComplete='none'
-            onChange={(e) => setSignUpConfirmPassword(e.target.value)}
-            required
-            value={signUpConfirmPassword}
-            type={showPassword ? 'text' : 'password'}
-          />
-          <SubmitButton
-            $deactive={signUpPassword === signUpConfirmPassword ? false : true}
-            type='submit'
-          >
-            Create account
-          </SubmitButton>
-          <ShowPasswordWrapper onClick={() => setShowPassword((prev) => !prev)}>
-            {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
-          </ShowPasswordWrapper>
-        </SignUpForm>
-        <ErrorContainer>
-          {signUpPassword.length < 6 || signUpConfirmPassword.length < 6 ? (
-            <ErrorMessage>Password must be at least 6 characters</ErrorMessage>
-          ) : (
-            ''
-          )}
-          {signUpPassword !== signUpConfirmPassword && (
-            <ErrorMessage>Passwords do not match</ErrorMessage>
-          )}
-          <ErrorMessage>{errorMessage}</ErrorMessage>
-        </ErrorContainer>
-        <Redirect>
-          Already signed up? <Link to='/login'>Click here</Link>
-        </Redirect>
-      </SignUpWrapper>
-    </SignUpContainer>
+    <>
+      <TestMessageModal />
+      <SignUpContainer>
+        <SignUpWrapper>
+          <SignUpForm onSubmit={handleSubmit}>
+            <Heading>Sign up</Heading>
+            <Label>Email:</Label>
+            <Input
+              autoFocus
+              autoComplete='none'
+              required
+              value={signUpEmail}
+              onChange={(e) => setSignUpEmail(e.target.value)}
+              type='email'
+            />
+            <Label>Password:</Label>
+            <Input
+              autoComplete='none'
+              required
+              onChange={(e) => setSignUpPassword(e.target.value)}
+              value={signUpPassword}
+              type={showPassword ? 'text' : 'password'}
+            />
+            <Label>Confirm password:</Label>
+            <Input
+              autoComplete='none'
+              onChange={(e) => setSignUpConfirmPassword(e.target.value)}
+              required
+              value={signUpConfirmPassword}
+              type={showPassword ? 'text' : 'password'}
+            />
+            <SubmitButton
+              $deactive={
+                signUpPassword === signUpConfirmPassword ? false : true
+              }
+              type='submit'
+            >
+              Create account
+            </SubmitButton>
+            <ShowPasswordWrapper
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
+            </ShowPasswordWrapper>
+          </SignUpForm>
+          <ErrorContainer>
+            {signUpPassword.length < 6 || signUpConfirmPassword.length < 6 ? (
+              <ErrorMessage>
+                Password must be at least 6 characters
+              </ErrorMessage>
+            ) : (
+              ''
+            )}
+            {signUpPassword !== signUpConfirmPassword && (
+              <ErrorMessage>Passwords do not match</ErrorMessage>
+            )}
+            <ErrorMessage>{errorMessage}</ErrorMessage>
+          </ErrorContainer>
+          <Redirect>
+            Already signed up? <Link to='/login'>Click here</Link>
+          </Redirect>
+        </SignUpWrapper>
+      </SignUpContainer>
+    </>
   );
 };
 
